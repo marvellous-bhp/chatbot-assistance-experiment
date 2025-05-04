@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trợ lí ảo thông minh hỗ trợ trả lời câu hỏi nằm trong nội dung website</title>
+</head>
+<body>
+    <h1>Trợ lí ảo trả lời câu hỏi có nội dung nằm trong trang web tiengducdanang.vn</h1>
+    <p>Đây chỉ là phiên bản thử nghiệm.</p>
+    <!-- ChatEmbed will be loaded here -->
+    <script type="module">
+        // Import the ChatEmbed library
+        import Chatbot from "https://cdn.jsdelivr.net/gh/marvellous-bhp/chat-embed@main/dist/web.js";
+
+        // Add debugging to console
+        console.log('Initializing ChatEmbed with custom backend...');
+
+        // Initialize the chatbot with custom backend
+        try {
+            Chatbot.init({
+
+                // Even though we don't use chatflowid in the custom backend, the Bot component still requires it
+                chatflowid: "custom", // Add a dummy chatflowid to satisfy the Bot component
+
+                // This is the base URL for your custom backend
+                apiHost: "https://n8n.khiemfle.com/webhook/c39e75f7-560b-4b3b-9ab1-a30fcff33de5",
+
+                backendProvider: "custom", // Use the custom backend provider
+
+                theme: {
+                    chatWindow: {
+                        welcomeMessage: "Hallo. Tôi có thể giúp gì cho bạn?"
+                    },
+                    footer: {
+                        showFooter: false // Hide the footer completely
+                    }
+                },
+
+                chatflowConfig: {
+                    test1: "test1"
+                },
+
+                // Add debug mode to see more logs
+                debug: true
+            });
+
+            console.log('ChatEmbed initialized successfully!');
+        } catch (error) {
+            console.error('Error initializing ChatEmbed:', error);
+        }
+    </script>
+</body>
+</html>
